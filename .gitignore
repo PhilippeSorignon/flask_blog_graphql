@@ -1,0 +1,4 @@
+env/
+blog/__pycache__/
+blog/auth/__pycache__/
+blog/post/__pycache__/
