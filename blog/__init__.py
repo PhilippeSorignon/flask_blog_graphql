@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user
@@ -8,7 +9,7 @@ app = Flask(__name__)
 app.debug = True
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://kbwowatv:3E0F0eZPfoyD4WaQ3DQfKK_sW543ess4@dumbo.db.elephantsql.com:5432/kbwowatv'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URI']
 db = SQLAlchemy(app)
 
 login_manager = LoginManager()
@@ -33,3 +34,5 @@ app.register_blueprint(post)
 from blog.auth.views import auth
 
 app.register_blueprint(auth)
+
+db.create_all()
