@@ -22,11 +22,11 @@ login_manager.login_view = 'auth.login'
 
 class SecureView(ModelView):
     def is_accessible(self):
-        return current_user.is_authenticated
+        return current_user.is_authenticated and current_user.is_admin()
 
 class SecureAdminIndexView(AdminIndexView):
     def is_accessible(self):
-        return current_user.is_authenticated
+        return current_user.is_authenticated and current_user.is_admin()
 
 admin = Admin(app, index_view=SecureAdminIndexView())
 
