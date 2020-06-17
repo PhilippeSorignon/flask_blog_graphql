@@ -4,6 +4,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user
 from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
+from flask_migrate import Migrate, MigrateCommand
+
 
 app = Flask(__name__)
 app.debug = True
@@ -11,6 +13,8 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URI']
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
 
 login_manager = LoginManager()
 login_manager.init_app(app)
