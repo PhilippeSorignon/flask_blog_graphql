@@ -12,7 +12,7 @@ class Post(SQLAlchemyObjectType):
 
 class Query(graphene.ObjectType):
     node = relay.Node.Field()
-    # Allows sorting over multiple columns, by default over the primary key
+    
     all_posts = SQLAlchemyConnectionField(Post.connection)
 
 schema = graphene.Schema(query=Query)
